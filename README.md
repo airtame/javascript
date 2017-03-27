@@ -761,6 +761,7 @@ Chained calls should always start in the next line
 // good
 "HELLO".toLowerCase()
   .replace('h', 'H');
+```
 
 
 #### no-alert
@@ -927,7 +928,7 @@ import foo, {
 
 Do not write empty blocks of code
 
-```
+```javascript
 // bad
 
 if (foo) {
@@ -1332,7 +1333,7 @@ function biz(bar) {
   let awesome = bar;
   return {awesome};
 }
-
+```
 
 
 #### one-var
@@ -1477,7 +1478,7 @@ let str1 = "my string";
 
 // good
 let str2 = 'my string';
-
+```
 
 
 #### quote-props
@@ -1603,6 +1604,9 @@ render() {
     </div>
   );
 }
+```
+
+
 
 #### [react/jsx-pascal-case](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-pascal-case.md)
 
@@ -1923,7 +1927,7 @@ Do not add space inside curly braces when writing a template string
 `hello, ${
     people.name
 }!`;
-
+```
 
 
 #### valid-jsdoc
