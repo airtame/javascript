@@ -7,7 +7,6 @@ An Airtame approach to Javascript and React
 TLDR; This eslint config follows Airbnb's [Javascript](https://github.com/airbnb/javascript) and [React](https://github.com/airbnb/javascript/tree/master/react) Styleguide, with a few additions for `import`/`export` validations and `jshint` validations and the exception of:
 
 - [Identifier Names](https://github.com/airbnb/javascript#naming--descriptive)
-- [Arrow function's implicit return](https://github.com/airbnb/javascript#arrows--implicit-return)
 - [Arrow function's parentheses](https://github.com/airbnb/javascript#arrows--one-arg-parens)
 - [Using underscore to indicate privacy](https://github.com/airbnb/javascript/blob/master/README.md#naming--leading-underscore)
 - [White space in braces](https://github.com/airbnb/javascript#whitespace--in-braces)
@@ -55,12 +54,15 @@ console.log(foo[0]);
 
 #### arrow-body-style
 
-Enforces all arrow functions to have brackets instead of implicit return
+Use implicit return on Arrow functions when possible
 
-> Why? Consistency amongst all other arrow functions
+> Why? Allows for less bloated blocks, specially on JSX outputs
 
 ```javascript
 // bad
+[1, 2, 3].map((number) => {return `A string containing the ${number}.`});
+
+// good
 [1, 2, 3].map((number, index) => ({
   [index]: number,
 }));
@@ -71,8 +73,7 @@ Enforces all arrow functions to have brackets instead of implicit return
   `A string containing the ${nextNumber}.`;
 });
 
-// good
-[1, 2, 3].map((number) => {return `A string containing the ${number}.`});
+
 ```
 
 
