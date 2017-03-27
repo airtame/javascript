@@ -1,6 +1,6 @@
 # Airtame eslint configuration
 
-[![Build Status](https://img.shields.io/travis/airtame/eslint-config-airtame.svg)](https://travis-ci.org/airtame/eslint-config-airtame) [![npm version](https://badge.fury.io/js/eslint-config-airtame.svg)](https://www.npmjs.com/package/eslint-config-airtame)
+[![Build Status](https://img.shields.io/travis/airtame/javascript.svg)](https://travis-ci.org/airtame/javascript) [![npm version](https://badge.fury.io/js/eslint-config-airtame.svg)](https://www.npmjs.com/package/eslint-config-airtame)
 
 An Airtame approach to Javascript and React
 
