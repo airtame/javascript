@@ -1,6 +1,6 @@
 {
   "name": "eslint-config-airtame",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Airtame's ESLint configuration",
   "scripts": {
     "test": "mocha --reporter dot --compilers js:babel-register ./test/"
@@ -31,6 +31,9 @@
     "chai": "^3.5.0",
     "eslint": "^3.18.0",
     "mocha": "^3.2.0"
+  },
+  "peerDependencies": {
+    "eslint": "^3.18.0"
   },
   "dependencies": {
     "babel-eslint": "^7.2.0",
