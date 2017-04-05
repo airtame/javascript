@@ -4,13 +4,11 @@
 
 An Airtame approach to Javascript and React
 
-TLDR; This eslint config follows Airbnb's [Javascript](https://github.com/airbnb/javascript) and [React](https://github.com/airbnb/javascript/tree/master/react) Styleguide, with a few additions for `import`/`export` validations and `jshint` validations and the exception of:
+TLDR; This eslint config follows Airbnb's [Javascript](https://github.com/airbnb/javascript) and [React](https://github.com/airbnb/javascript/tree/master/react) Styleguide, with a few additions for `import`/`export` and `jshint` validations and the exception of:
 
 - [Identifier Names](https://github.com/airbnb/javascript#naming--descriptive)
-- [Arrow function's parentheses](https://github.com/airbnb/javascript#arrows--one-arg-parens)
 - [Using underscore to indicate privacy](https://github.com/airbnb/javascript/blob/master/README.md#naming--leading-underscore)
 - [White space in braces](https://github.com/airbnb/javascript#whitespace--in-braces)
-
 
 ## Usage
 
@@ -79,21 +77,10 @@ Use implicit return on Arrow functions when possible
 
 #### arrow-parens
 
-Enforces all arrow functions to have parentheses on the parameter side, even when there's only one parameter
-
-> Why? Consistency amongst all arrow functions
+Only use parenthesis when arrow functions have more than one parameter
 
 ```javascript
 // bad
-[1, 2, 3].map(number => {
-  const nextNumber = number + 1;
-  `A string containing the ${nextNumber}.`;
-});
-
-// bad
-[1, 2, 3].map(number => `A string containing the ${number}.`);
-
-// good
 [1, 2, 3].map((number) => {
   const nextNumber = number + 1;
   return `A string containing the ${nextNumber}.`;
@@ -103,6 +90,15 @@ Enforces all arrow functions to have parentheses on the parameter side, even whe
 [1, 2, 3].map((number, index) => ({
   [index]: number,
 }));
+
+// good
+[1, 2, 3].map(number => {
+  const nextNumber = number + 1;
+  `A string containing the ${nextNumber}.`;
+});
+
+// good
+[1, 2, 3].map(number => `A string containing the ${number}.`);
 ```
 
 
