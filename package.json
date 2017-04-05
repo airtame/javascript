@@ -1,6 +1,6 @@
 {
   "name": "eslint-config-airtame",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "description": "Airtame's ESLint configuration",
   "scripts": {
     "test": "mocha --reporter dot --compilers js:babel-register ./test/"
