@@ -1,7 +1,7 @@
 {
   "name": "eslint-config-airtame",
-  "version": "2.0.0",
-  "description": "Airtame's ESLint configuration",
+  "version": "3.0.0",
+  "description": "Airtame's ESLint configuration. It includes prettier for code style",
   "scripts": {
     "test": "mocha --reporter dot --compilers js:babel-register ./test/"
   },
@@ -30,16 +30,20 @@
     "babel-register": "^6.24.0",
     "chai": "^3.5.0",
     "eslint": "^3.18.0",
-    "mocha": "^3.2.0"
+    "mocha": "^3.2.0",
+    "prettier": "^1.5.3"
   },
   "peerDependencies": {
-    "eslint": "^3.18.0"
+    "eslint": "^3.18.0",
+    "prettier": "^1.5.3"
   },
   "dependencies": {
     "babel-eslint": "^7.2.0",
+    "eslint-config-prettier": "^2.3.0",
     "eslint-plugin-babel": "^4.1.1",
     "eslint-plugin-import": "^2.2.0",
-    "eslint-plugin-jsx-a11y": "^4.0.0",
-    "eslint-plugin-react": "^6.10.3"
+    "eslint-plugin-jsx-a11y": "^5.1.1",
+    "eslint-plugin-prettier": "^2.2.0",
+    "eslint-plugin-react": "^7.2.1"
   }
 }
