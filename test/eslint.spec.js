@@ -8,9 +8,17 @@ describe('eslint', () => {
     const cli = new CLIEngine({
       useEslintrc: false,
       configFile: './eslintrc.json'
-    })
+    });
 
-    expect(cli.executeOnText('// this is a comment\n').errorCount).to.equal(0);
+    const report = cli.executeOnText('var x =  0;');
+    const report2 = cli.executeOnText('// this is a coment\n');
+    const report3 = cli.executeOnText('const x =  0;');
+    const report4 = cli.executeOnText('let x = 1');
+
+    expect(report.results[0].errorCount).to.equal(2);
+    expect(report2.results[0].errorCount).to.equal(0);
+    expect(report3.results[0].errorCount).to.equal(1);
+    expect(report4.results[0].errorCount).to.equal(2);
   });
 
 });
