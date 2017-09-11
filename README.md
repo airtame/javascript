@@ -1,14 +1,11 @@
 # Airtame eslint configuration
 
-[![Build Status](https://img.shields.io/travis/airtame/javascript.svg)](https://travis-ci.org/airtame/javascript) [![npm version](https://badge.fury.io/js/eslint-config-airtame.svg)](https://www.npmjs.com/package/eslint-config-airtame)
+[![Build Status](https://img.shields.io/travis/airtame/javascript.svg)](https://travis-ci.org/airtame/javascript) [![npm version](https://badge.fury.io/js/eslint-config-airtame.svg)](https://www.npmjs.com/package/eslint-config-airtame) [![David](https://img.shields.io/david/airtame/javascript.svg)](https://david-dm.org/airtame/javascript)
 
 An Airtame approach to Javascript and React
 
-TLDR; This eslint config follows Airbnb's [Javascript](https://github.com/airbnb/javascript) and [React](https://github.com/airbnb/javascript/tree/master/react) Styleguide, with a few additions for `import`/`export` and `jshint` validations and the exception of:
+This config is inspired by Airbnb's [Javascript](https://github.com/airbnb/javascript) and [React](https://github.com/airbnb/javascript/tree/master/react) styleguides with an Airtame touch and the help of [Prettier](https://github.com/prettier/prettier) for styling.
 
-- [Identifier Names](https://github.com/airbnb/javascript#naming--descriptive)
-- [Using underscore to indicate privacy](https://github.com/airbnb/javascript/blob/master/README.md#naming--leading-underscore)
-- [White space in braces](https://github.com/airbnb/javascript#whitespace--in-braces)
 
 ## Usage
 
@@ -31,113 +28,17 @@ Then, on your `eslint` configuration file
 }
 ```
 
+If using prettier extension on your text editor, the following options are necessary
+
+```
+"eslintIntegration": true,
+"printWidth": 100,
+"trailingComma": "es5",
+"singleQuote": true
+```
 
 
 ## Rules
-
-#### array-bracket-spacing
-
-Prevents spaces from being added inside brackets
-
-```javascript
-// bad
-const foo = [ 1, 2, 3 ];
-console.log(foo[ 0 ]);
-
-// good
-const foo = [1, 2, 3];
-console.log(foo[0]);
-```
-
-
-#### arrow-body-style
-
-Use implicit return on Arrow functions when possible
-
-> Why? Allows for less bloated blocks, specially on JSX outputs
-
-```javascript
-// bad
-[1, 2, 3].map((number) => {return `A string containing the ${number}.`});
-
-// good
-[1, 2, 3].map((number, index) => ({
-  [index]: number,
-}));
-
-// good
-[1, 2, 3].map((number) => {
-  const nextNumber = number + 1;
-  `A string containing the ${nextNumber}.`;
-});
-
-
-```
-
-
-#### arrow-parens
-
-Only use parenthesis when arrow functions have more than one parameter
-
-```javascript
-// bad
-[1, 2, 3].map((number) => {
-  const nextNumber = number + 1;
-  return `A string containing the ${nextNumber}.`;
-});
-
-// good
-[1, 2, 3].map((number, index) => ({
-  [index]: number,
-}));
-
-// good
-[1, 2, 3].map(number => {
-  const nextNumber = number + 1;
-  `A string containing the ${nextNumber}.`;
-});
-
-// good
-[1, 2, 3].map(number => `A string containing the ${number}.`);
-```
-
-
-#### arrow-spacing
-
-Always add a space before and after an arrow function's arrow
-
-```javascript
-// bad
-[1, 2, 3].map((value)=>{ return value + 1; })
-
-// good
-[1, 2, 3].map((value) => { return value + 1; })
-```
-
-
-#### brace-style
-
-Multi-line blocks, including `if` and `else` clauses should close bracket at the same level as opening. In the case of `else`, it goes on the same line as `if`.
-
-```javascript
-// bad
-if (test) {
-  thing1();
-  thing2();
-}
-else {
-  thing3();
-}
-
-// good
-if (test) {
-  thing1();
-  thing2();
-} else {
-  thing3();
-}
-```
-
 
 #### camelcase
 
@@ -153,78 +54,6 @@ function c() {}
 const thisIsMyObject = {};
 function thisIsMyFunction() {}
 ```
-
-
-#### comma-dangle
-
-Add a trailing comma.
-
-> Why? This leads to cleaner git diffs. Also, transpilers like Babel will remove the additional trailing comma in the transpiled code which means you don't have to worry about the trailing comma problem in legacy browsers.
-
-```diff
-// bad - git diff without trailing comma
-const hero = {
-     firstName: 'Florence',
--    lastName: 'Nightingale'
-+    lastName: 'Nightingale',
-+    inventorOf: ['coxcomb chart', 'modern nursing']
-};
-
-// good - git diff with trailing comma
-const hero = {
-     firstName: 'Florence',
-     lastName: 'Nightingale',
-+    inventorOf: ['coxcomb chart', 'modern nursing'],
-};
-```
-
-
-
-#### comma-spacing
-
-Add a space after commas, but never before.
-
-```javascript
-// bad
-var foo = 1 ,bar = 2;
-var arr = [1 , 2];
-var obj = {"foo": "bar" ,"baz": "qur"};
-foo(a ,b);
-new Foo(a ,b);
-function foo(a ,b){}
-a ,b
-
-// good
-var arr = [1, 2];
-var arr = [1,, 3]
-var obj = {"foo": "bar", "baz": "qur"};
-foo(a, b);
-new Foo(a, b);
-function foo(a, b){}
-a, b
-```
-
-
-#### comma-style
-
-No leading commas.
-
-```javascript
-// bad
-const story = [
-    once
-  , upon
-  , aTime
-];
-
-// good
-const story = [
-  once,
-  upon,
-  aTime,
-];
-```
-
 
 #### curly
 
@@ -305,32 +134,6 @@ if (x !== 5) {
   console.log(x);
 }
 ```
-
-
-#### eol-last
-
-End files with a single newline character
-
-```javascript
-// bad
-import { es6 } from './AirbnbStyleGuide';
-  // ...
-export default es6;
-```
-```javascript
-// bad
-import { es6 } from './AirbnbStyleGuide';
-  // ...
-export default es6;↵
-↵
-```
-```javascript
-// good
-import { es6 } from './AirbnbStyleGuide';
-  // ...
-export default es6;↵
-```
-
 
 #### [import/default](https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/default.md)
 
@@ -579,24 +382,6 @@ export { foo as default }
 export * from './other-module'
 ```
 
-#### indent
-
-Use double spaced for indentation instead of tabs.
-
-```javascript
-// bad
-const foo = {
-    omg: 'wtf',
-    zomg: 'bbq'
-};
-
-// good
-const foo = {
-  omg: 'wtf',
-  zomg: 'bbq'
-};
-```
-
 #### [jsx-a11y/aria-role](https://github.com/evcohen/eslint-plugin-jsx-a11y/blob/master/docs/rules/aria-role.md)
 
 Enforce that elements with ARIA roles must use a valid, non-abstract ARIA role.
@@ -613,7 +398,7 @@ Enforce that elements with ARIA roles must use a valid, non-abstract ARIA role.
 <div></div>
 ```
 
-#### [jsx-a11y/img-has-alt](https://github.com/evcohen/eslint-plugin-jsx-a11y/blob/master/docs/rules/img-has-alt.md)
+#### [jsx-a11y/alt-text](https://github.com/evcohen/eslint-plugin-jsx-a11y/blob/master/docs/rules/alt-text.md)
 
 Make sure all images have the `alt` prop
 
@@ -653,72 +438,9 @@ Do not use the `accessKey` prop.
 <div />
 ```
 
-
-#### jsx-quotes
-
-Always use double quotes (") for JSX attributes, but single quotes (') for all other JS. eslint: jsx-quotes
-
-> Why? Regular HTML attributes also typically use double quotes instead of single, so JSX attributes mirror this convention.
-
-```javascript
-// bad
-<Foo bar='bar' />
-
-// good
-<Foo bar="bar" />
-
-// bad
-<Foo style={{ left: "20px" }} />
-
-// good
-<Foo style={{ left: '20px' }} />
-```
-
-
-#### keyword-spacing
-
-Enforce a space before and after keywords like `if`, `switch`, ect. See full list [here](http://eslint.org/docs/rules/keyword-spacing).
-
-```javascript
-// bad
-if(foo) {
-    // ...
-}
-
-if (foo){
-    // ...
-}
-
-if(foo){
-    // ...
-}
-
-// good
-if (foo) {
-    // ...
-}
-```
-
-
-#### linebreak-style
-
-Use unix style linebreaks
-
-```javascript
-// bad
-var a = 'a'; // \r\n
-
-// good
-function foo(params) { // \n
-    // do stuff \n
-}// \n
-```
-
-
 #### max-len
 
 Each line of code should be no longer than 100 characters
-
 
 
 #### new-cap
@@ -746,20 +468,6 @@ const good = new User({
   name: 'yup',
 });
 ```
-
-#### newline-per-chained-call
-
-Chained calls should always start in the next line
-
-```javascript
-// bad
-"HELLO".toLowerCase().replace('h', 'H');
-
-// good
-"HELLO".toLowerCase()
-  .replace('h', 'H');
-```
-
 
 #### no-alert
 
@@ -855,24 +563,6 @@ const itemHeight = (item) => {
 Console logs are thrown as warnings to allow debugging. Make sure to remove before deployment.
 
 
-
-#### no-const-assign
-
-Do not try to reasign values declared with `const`
-
-```javascript
-// bad
-const a = 0;
-a = 1;
-a += 1;
-++ a;
-
-// good
-const b = 5;
-console.log(b);
-```
-
-
 #### no-dupe-class-members
 
 Avoid duplicate class members.
@@ -951,28 +641,6 @@ if (foo) {
 }
 ```
 
-
-#### no-extra-semi
-
-Do not add unnecessary semicolons.
-
-```javascript
-//bad
-var x = 5;;
-
-function foo() {
-    // code
-};
-
-// good
-var x = 5;
-
-var foo = function() {
-    // code
-};
-```
-
-
 #### no-iterator
 
 Do not use iterators like `for-in` and `for-of`
@@ -1034,7 +702,6 @@ function foo() {
   ...
 }
 ```
-
 
 
 #### no-multi-spaces
@@ -1151,19 +818,6 @@ See [`no-iterator`](#no-iterator)
 
 
 
-#### no-trailing-spaces
-
-Avoid having extra empty spaces at the end of a line to avoid issues in diffs
-
-```
-// bad
-var foo = 0;//•••••
-var baz = 5;//••
-//•••••
-```
-
-
-
 #### no-throw-literal
 
 Only throw valid errors as part of a `throw`.
@@ -1214,6 +868,8 @@ const foo = a || b;
 const bar = !!c;
 const baz = !c;
 ```
+
+
 #### no-unused-vars
 
 All declared variables must be used. Otherwise the variable shouldn't exist;
@@ -1294,24 +950,6 @@ let y = 5;
 ```
 
 
-
-#### no-whitespace-before-property
-
-When chaining properties, leave no space between them.
-
-```javascript
-// bad
-foo. bar .baz . quz
-
-// good
-foo
-  .bar()
-  .baz()
-  .qux();
-```
-
-
-
 #### object-shorthand
 
 Use object shorthand notation when possible.
@@ -1350,35 +988,6 @@ let biz;
 ```
 
 
-#### padded-blocks
-
-Do not pad your blocks with empty lines
-
-```javascript
-// bad
-function bar() {
-
-  console.log(foo);
-
-}
-
-// also bad
-if (baz) {
-
-  console.log(qux);
-} else {
-  console.log(foo);
-
-}
-
-// good
-function bar() {
-  console.log(foo);
-}
-```
-
-
-
 #### prefer-arrow-callback
 
 User arrow functions for your callbacks
@@ -1398,7 +1007,6 @@ User arrow functions for your callbacks
   return x * y;
 });
 ```
-
 
 
 #### prefer-const
@@ -1465,41 +1073,6 @@ const greeting2 = `Tim is also ${age} years old`;
 ```
 
 
-#### quotes
-
-Use single quotes instead of double quotes for everything string related.
-
-```javascript
-// bad
-let str1 = "my string";
-
-// good
-let str2 = 'my string';
-```
-
-
-#### quote-props
-
-Only quote props that are invalid identifiers
-
-```javascript
-// bad
-const bad = {
-  'foo': 3,
-  'bar': 4,
-  'data-blah': 5,
-};
-
-// good
-const good = {
-  foo: 3,
-  bar: 4,
-  'data-blah': 5,
-};
-```
-
-
-
 #### radix
 
 Always set the radix when using `parseInt()`
@@ -1524,53 +1097,6 @@ Do not set explicit value for boolean JSX attributes.
 
 // good
 <Component disabled />
-```
-
-#### [react/jsx-closing-bracket-location](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-closing-bracket-location.md)
-
-Closing JSX brackets should close at the same level as their opening bracket when doing multi line components.
-
-```javascript
-// bad
-<Component
-  prop="foo"
-  otherProp="bar" />
-
-<Component
-  prop="foo"
-  otherProp="bar"
-  />
-
-// good
-<Component
-  prop="foo"
-  otherProp="bar"
-/>
-```
-
-
-#### [react/jsx-curly-spacing](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-curly-spacing.md)
-
-Never have a space before and after curly brackets when they represent the value for a prop
-
-```javascript
-// bad
-<Component
-  prop={ myVariable }
-/>
-
-<Component
-  prop={myVariable }
-/>
-
-<Component
-  prop={ myVariable}
-/>
-
-// good
-<Component
-  prop={myVariable}
-/>
 ```
 
 
@@ -1622,7 +1148,7 @@ class MyComponent extends React.Component {
 ```
 
 
-#### [react/jsx-space-before-closing](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-space-before-closing.md)
+#### [react/jsx-tag-spacing](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-tag-spacing.md)
 
 Always use a space before a self closing tag.
 
@@ -1794,57 +1320,6 @@ function multiply(a, b) {
 ```
 
 
-#### semi
-
-Always add a semicolon at the end of your statements
-
-```javascript
-// bad
-var x
-
-// good
-let y = 5;
-```
-
-
-
-#### space-before-blocks
-
-Add a space before all blocks
-
-```javascript
-// bad
-if (a){
-    b();
-}
-
-function a(){}
-
-// good
-if (a) {
-    b();
-}
-
-function a() {}
-```
-#### space-before-function-paren
-
-Do not add a space before the parenthesis of a function's name and its parameters
-
-```javascript
-// bad
-function a () {
-  // do stuff
-}
-
-// good
-function a() {
-  // do stuff
-}
-```
-
-
-
 #### spaced-comment
 
 Always add a space after your comments
@@ -1866,64 +1341,6 @@ Always add a space after your comments
 /******************************
  *   A pretty block comment   *
  ******************************/
-```
-
-
-#### space-infix-ops
-
-Add space between your operators
-
-```javascript
-// bad
-const x=y+5;
-
-// good
-const x = y + 5;
-```
-
-
-#### space-in-parens
-
-Do not add spaces inside parameters
-
-```javascript
-// bad
-function bar( foo ) {
-  return foo;
-}
-
-// good
-function bar(foo) {
-  return foo;
-}
-
-// bad
-if ( foo ) {
-  console.log(foo);
-}
-
-// good
-if (foo) {
-  console.log(foo);
-}
-```
-
-
-#### template-curly-spacing
-
-Do not add space inside curly braces when writing a template string
-
-```javascript
-// bad
-`hello, ${ people.name}!`;
-`hello, ${people.name }!`;
-
-// good
-`hello, ${people.name}!`;
-
-`hello, ${
-    people.name
-}!`;
 ```
 
 
