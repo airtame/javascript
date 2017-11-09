@@ -1,5 +1,7 @@
 # Airtame eslint configuration
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/airtame/javascript.svg)](https://greenkeeper.io/)
+
 [![Build Status](https://img.shields.io/travis/airtame/javascript.svg)](https://travis-ci.org/airtame/javascript) [![npm version](https://badge.fury.io/js/eslint-config-airtame.svg)](https://www.npmjs.com/package/eslint-config-airtame) [![David](https://img.shields.io/david/airtame/javascript.svg)](https://david-dm.org/airtame/javascript)
 
 An Airtame approach to Javascript and React
