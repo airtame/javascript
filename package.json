@@ -2,39 +2,37 @@
   "name": "eslint-config-airtame",
   "version": "3.0.0",
   "description": "Airtame's ESLint configuration. It includes prettier for code style",
-  "scripts": {
-    "test": "mocha --reporter dot --compilers js:babel-register ./test/"
-  },
   "keywords": ["airtame", "es6", "eslint", "eslintconfig", "react"],
   "author": "Marcos Mellado <marcos@mellados.com>",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git@github.com:airtame/javascript.git"
+    "url": "https://github.com/airtame/javascript.git"
   },
   "main": "index.js",
   "files": ["eslintrc.json", "index.js"],
   "devDependencies": {
-    "babel-core": "^6.24.0",
-    "babel-eslint": "^8.0.2",
-    "babel-preset-es2015": "^6.24.0",
-    "babel-register": "^6.24.0",
-    "chai": "^4.1.2",
-    "eslint": "^4.10.0",
-    "mocha": "^4.0.1",
-    "prettier": "^1.5.3"
+    "babel-core": "^6.26.0",
+    "babel-jest": "^21.2.0",
+    "babel-preset-es2015": "^6.24.1",
+    "eslint": "^4.11.0",
+    "jest": "^21.2.1",
+    "prettier": "^1.8.2"
   },
   "peerDependencies": {
-    "eslint": "^3.18.0",
-    "prettier": "^1.5.3"
+    "eslint": "^4.11.0",
+    "prettier": "^1.8.2"
   },
   "dependencies": {
     "babel-eslint": "^8.0.2",
-    "eslint-config-prettier": "^2.3.0",
-    "eslint-plugin-babel": "^4.1.1",
-    "eslint-plugin-import": "^2.2.0",
+    "eslint-config-prettier": "^2.7.0",
+    "eslint-plugin-babel": "^4.1.2",
+    "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-jsx-a11y": "^6.0.2",
-    "eslint-plugin-prettier": "^2.2.0",
-    "eslint-plugin-react": "^7.2.1"
+    "eslint-plugin-prettier": "^2.3.1",
+    "eslint-plugin-react": "^7.4.0"
+  },
+  "scripts": {
+    "test": "jest"
   }
 }
