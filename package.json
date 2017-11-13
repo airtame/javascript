@@ -1,6 +1,6 @@
 {
   "name": "eslint-config-airtame",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Airtame's ESLint configuration. It includes prettier for code style",
   "keywords": ["airtame", "es6", "eslint", "eslintconfig", "react"],
   "author": "Marcos Mellado <marcos@mellados.com>",
