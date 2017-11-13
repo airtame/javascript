@@ -1,4 +1,3 @@
-import chai, { expect } from 'chai';
 import { CLIEngine } from 'eslint';
 
 describe('eslint', () => {
@@ -13,9 +12,9 @@ describe('eslint', () => {
     const report3 = cli.executeOnText('const x =  0;\n');
     const report4 = cli.executeOnText('let x = 1\n');
 
-    expect(report.results[0].errorCount).to.equal(3);
-    expect(report2.results[0].errorCount).to.equal(0);
-    expect(report3.results[0].errorCount).to.equal(2);
-    expect(report4.results[0].errorCount).to.equal(3);
+    expect(report.results[0].errorCount).toEqual(3);
+    expect(report2.results[0].errorCount).toEqual(0);
+    expect(report3.results[0].errorCount).toEqual(2);
+    expect(report4.results[0].errorCount).toEqual(3);
   });
 });
