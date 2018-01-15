@@ -13,7 +13,7 @@
   "files": ["eslintrc.json", "index.js"],
   "devDependencies": {
     "babel-core": "^6.26.0",
-    "babel-jest": "^21.2.0",
+    "babel-jest": "^22.1.0",
     "babel-preset-env": "^1.6.1",
     "eslint": "^4.11.0",
     "jest": "^21.2.1",
